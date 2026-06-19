@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MarineAI Smart Maintenance Package — AI-supported predictive maintenance for marine engine systems.">
+  <title>MarineAI Smart Maintenance Package</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-icon" aria-hidden="true">⚓</span>
+        <span class="logo-text">MarineAI</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+        <li><a href="#packages" class="nav-link">Packages</a></li>
+        <li><a href="#mobile-app" class="nav-link">Mobile App</a></li>
+        <li><a href="#demo" class="nav-link nav-link--cta">Request Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Home -->
+    <section class="hero" id="home">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <div class="hero-badge">University Engineering Project</div>
+        <h1 class="hero-title">MarineAI Smart Maintenance Package</h1>
+        <p class="hero-subtitle">
+          An AI-supported predictive maintenance decision support system for marine engine systems.
+          Monitor engine health, detect risks early, and get clear maintenance recommendations.
+        </p>
+        <div class="hero-actions">
+          <a href="#dashboard" class="btn btn-primary">View Dashboard Preview</a>
+          <a href="#how-it-works" class="btn btn-secondary">Learn How It Works</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">24/7</span>
+            <span class="stat-label">Engine Monitoring</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">AI</span>
+            <span class="stat-label">Risk Prediction</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Service Packages</span>
+          </div>
+        </div>
+      </div>
+      <div class="wave-divider" aria-hidden="true">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" fill="var(--color-surface)"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Process</span>
+          <h2 class="section-title">How It Works</h2>
+          <p class="section-desc">
+            MarineAI collects engine sensor data, analyses it with machine learning models,
+            and helps technicians make better maintenance decisions.
+          </p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">01</div>
+            <div class="step-icon" aria-hidden="true">📡</div>
+            <h3 class="step-title">Collect Sensor Data</h3>
+            <p class="step-text">
+              Temperature, oil pressure, vibration, and operating hours are collected from the marine engine in real time.
+            </p>
+          </div>
+          <div class="step-connector" aria-hidden="true"></div>
+          <div class="step">
+            <div class="step-number">02</div>
+            <div class="step-icon" aria-hidden="true">🧠</div>
+            <h3 class="step-title">AI Analysis</h3>
+            <p class="step-text">
+              The system uses AI models to calculate health scores, detect possible faults, and estimate risk levels.
+            </p>
+          </div>
+          <div class="step-connector" aria-hidden="true"></div>
+          <div class="step">
+            <div class="step-number">03</div>
+            <div class="step-icon" aria-hidden="true">📊</div>
+            <h3 class="step-title">Dashboard & Alerts</h3>
+            <p class="step-text">
+              Operators and technicians see clear dashboards, alerts, and recommended actions on web and mobile.
+            </p>
+          </div>
+          <div class="step-connector" aria-hidden="true"></div>
+          <div class="step">
+            <div class="step-number">04</div>
+            <div class="step-icon" aria-hidden="true">🔧</div>
+            <h3 class="step-title">Maintenance Action</h3>
+            <p class="step-text">
+              Teams follow guided checklists, perform maintenance, and send feedback to improve future predictions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Preview -->
+    <section class="section section--alt" id="dashboard">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Live Preview</span>
+          <h2 class="section-title">Dashboard Preview</h2>
+          <p class="section-desc">
+            Simulated engine data showing how MarineAI presents health status and maintenance recommendations.
+          </p>
+        </div>
+
+        <div class="dashboard">
+          <div class="dashboard-header">
+            <div class="dashboard-engine">
+              <span class="engine-label">Engine Unit</span>
+              <span class="engine-id">ME-01 · Main Propulsion Engine</span>
+            </div>
+            <div class="dashboard-status">
+              <span class="status-dot status-dot--warning"></span>
+              <span>Monitoring Active</span>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <!-- Health Score -->
+            <div class="dash-card dash-card--highlight">
+              <div class="dash-card-label">Engine Health Score</div>
+              <div class="health-score">
+                <svg class="health-ring" viewBox="0 0 120 120" aria-hidden="true">
+                  <circle cx="60" cy="60" r="52" fill="none" stroke="var(--color-border)" stroke-width="10"/>
+                  <circle cx="60" cy="60" r="52" fill="none" stroke="var(--color-warning)" stroke-width="10"
+                    stroke-dasharray="326.7" stroke-dashoffset="104.5" stroke-linecap="round"
+                    transform="rotate(-90 60 60)"/>
+                </svg>
+                <div class="health-value">
+                  <span class="health-number" id="healthScore">68</span>
+                  <span class="health-max">/100</span>
+                </div>
+              </div>
+              <div class="risk-badge risk-badge--high">Risk Level: High</div>
+            </div>
+
+            <!-- AI Confidence -->
+            <div class="dash-card">
+              <div class="dash-card-label">AI Confidence</div>
+              <div class="dash-metric">
+                <span class="metric-value">87%</span>
+                <div class="progress-bar">
+                  <div class="progress-fill progress-fill--good" style="width: 87%"></div>
+                </div>
+              </div>
+              <p class="dash-card-note">High confidence in current prediction</p>
+            </div>
+
+            <!-- Sensor Readings -->
+            <div class="dash-card dash-card--wide">
+              <div class="dash-card-label">Sensor Readings</div>
+              <div class="sensor-grid">
+                <div class="sensor-item">
+                  <span class="sensor-icon" aria-hidden="true">🌡️</span>
+                  <div>
+                    <span class="sensor-name">Temperature</span>
+                    <span class="sensor-value sensor-value--warning">92°C</span>
+                  </div>
+                </div>
+                <div class="sensor-item">
+                  <span class="sensor-icon" aria-hidden="true">🛢️</span>
+                  <div>
+                    <span class="sensor-name">Oil Pressure</span>
+                    <span class="sensor-value sensor-value--danger">Low</span>
+                  </div>
+                </div>
+                <div class="sensor-item">
+                  <span class="sensor-icon" aria-hidden="true">📳</span>
+                  <div>
+                    <span class="sensor-name">Vibration Level</span>
+                    <span class="sensor-value sensor-value--danger">High</span>
+                  </div>
+                </div>
+                <div class="sensor-item">
+                  <span class="sensor-icon" aria-hidden="true">⏱️</span>
+                  <div>
+                    <span class="sensor-name">Operating Hours</span>
+                    <span class="sensor-value">1340 h</span>
+                  </div>
+                </div>
+                <div class="sensor-item">
+                  <span class="sensor-icon" aria-hidden="true">📅</span>
+                  <div>
+                    <span class="sensor-name">Last Maintenance</span>
+                    <span class="sensor-value sensor-value--warning">78 days ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AI Recommendation -->
+            <div class="dash-card dash-card--wide dash-card--alert">
+              <div class="dash-card-label">AI Recommendation</div>
+              <div class="recommendation">
+                <div class="rec-item">
+                  <span class="rec-label">Possible Fault</span>
+                  <span class="rec-value">Cooling system or lubrication problem</span>
+                </div>
+                <div class="rec-item">
+                  <span class="rec-label">Recommended Action</span>
+                  <span class="rec-value rec-value--action">Check cooling system and oil circulation within 24 hours</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Maintenance Packages -->
+    <section class="section" id="packages">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Services</span>
+          <h2 class="section-title">Maintenance Packages</h2>
+          <p class="section-desc">
+            Choose a maintenance package that fits your vessel's needs and operational requirements.
+          </p>
+        </div>
+
+        <div class="packages-grid">
+          <div class="package-card">
+            <div class="package-tier">Basic</div>
+            <h3 class="package-name">Basic Package</h3>
+            <p class="package-desc">Essential monitoring for small vessels and routine engine checks.</p>
+            <ul class="package-features">
+              <li>Monthly engine health report</li>
+              <li>Basic sensor data logging</li>
+              <li>Email alerts for critical issues</li>
+              <li>Standard maintenance schedule</li>
+              <li>Web dashboard access</li>
+            </ul>
+            <a href="#demo" class="btn btn-outline">Request Info</a>
+          </div>
+
+          <div class="package-card package-card--featured">
+            <div class="package-badge">Most Popular</div>
+            <div class="package-tier">Smart</div>
+            <h3 class="package-name">Smart Package</h3>
+            <p class="package-desc">AI-powered predictive maintenance with real-time monitoring and mobile access.</p>
+            <ul class="package-features">
+              <li>Real-time AI health scoring</li>
+              <li>Predictive fault detection</li>
+              <li>Mobile app for technicians</li>
+              <li>Priority alert notifications</li>
+              <li>Guided maintenance checklists</li>
+              <li>Quarterly performance review</li>
+            </ul>
+            <a href="#demo" class="btn btn-primary">Request Demo</a>
+          </div>
+
+          <div class="package-card">
+            <div class="package-tier">Premium</div>
+            <h3 class="package-name">Premium Package</h3>
+            <p class="package-desc">Full-service solution for commercial fleets with advanced analytics and support.</p>
+            <ul class="package-features">
+              <li>Everything in Smart Package</li>
+              <li>Multi-engine fleet management</li>
+              <li>Advanced trend analytics</li>
+              <li>24/7 technical support hotline</li>
+              <li>On-board technician training</li>
+              <li>Custom AI model tuning</li>
+            </ul>
+            <a href="#demo" class="btn btn-outline">Contact Sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile App Prototype -->
+    <section class="section section--alt" id="mobile-app">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Prototype</span>
+          <h2 class="section-title">Mobile App Prototype Preview</h2>
+          <p class="section-desc">
+            A phone interface designed for marine technicians to receive alerts, follow checklists, and send feedback.
+          </p>
+        </div>
+
+        <div class="mobile-preview">
+          <div class="mobile-info">
+            <h3>Built for Technicians at Sea</h3>
+            <p>
+              The mobile app gives technicians quick access to engine alerts and AI recommendations
+              while they work on board. Use the tabs below to explore each screen.
+            </p>
+            <ul class="mobile-features-list">
+              <li>Real-time alert notifications</li>
+              <li>Step-by-step maintenance checklists</li>
+              <li>AI recommendation summaries</li>
+              <li>Feedback submission after repairs</li>
+            </ul>
+          </div>
+
+          <div class="phone-wrapper">
+            <div class="phone">
+              <div class="phone-notch" aria-hidden="true"></div>
+              <div class="phone-screen">
+                <div class="phone-status-bar">
+                  <span>09:41</span>
+                  <span>MarineAI Tech</span>
+                  <span>📶 🔋</span>
+                </div>
+
+                <!-- Screen tabs -->
+                <div class="phone-screens" id="phoneScreens">
+                  <!-- Dashboard -->
+                  <div class="phone-screen-content active" data-screen="dashboard">
+                    <div class="app-header">
+                      <h4>Technician Dashboard</h4>
+                      <span class="app-badge app-badge--alert">2 Alerts</span>
+                    </div>
+                    <div class="app-card app-card--alert">
+                      <span class="app-alert-level">High Priority</span>
+                      <p class="app-alert-title">Engine ME-01 — Cooling Warning</p>
+                      <p class="app-alert-time">12 minutes ago</p>
+                    </div>
+                    <div class="app-card">
+                      <span class="app-alert-level app-alert-level--medium">Medium</span>
+                      <p class="app-alert-title">Oil filter check due</p>
+                      <p class="app-alert-time">2 hours ago</p>
+                    </div>
+                    <div class="app-quick-stats">
+                      <div class="app-stat">
+                        <span class="app-stat-val">68</span>
+                        <span class="app-stat-lbl">Health Score</span>
+                      </div>
+                      <div class="app-stat">
+                        <span class="app-stat-val">1340h</span>
+                        <span class="app-stat-lbl">Run Hours</span>
+                      </div>
+                      <div class="app-stat">
+                        <span class="app-stat-val">78d</span>
+                        <span class="app-stat-lbl">Since Service</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Alert Detail -->
+                  <div class="phone-screen-content" data-screen="alert">
+                    <div class="app-header">
+                      <h4>Alert Detail</h4>
+                    </div>
+                    <div class="app-detail-card">
+                      <div class="app-detail-row">
+                        <span>Engine</span>
+                        <strong>ME-01 Main Propulsion</strong>
+                      </div>
+                      <div class="app-detail-row">
+                        <span>Alert Type</span>
+                        <strong class="text-danger">High Temperature + Low Oil Pressure</strong>
+                      </div>
+                      <div class="app-detail-row">
+                        <span>Detected</span>
+                        <strong>Today, 09:29</strong>
+                      </div>
+                      <div class="app-detail-row">
+                        <span>Risk Level</span>
+                        <strong class="text-danger">High</strong>
+                      </div>
+                      <div class="app-detail-row">
+                        <span>AI Confidence</span>
+                        <strong>87%</strong>
+                      </div>
+                    </div>
+                    <p class="app-detail-note">
+                      Multiple sensor readings indicate a possible cooling or lubrication issue.
+                      Immediate inspection is recommended.
+                    </p>
+                  </div>
+
+                  <!-- AI Recommendation -->
+                  <div class="phone-screen-content" data-screen="recommendation">
+                    <div class="app-header">
+                      <h4>AI Recommendation</h4>
+                    </div>
+                    <div class="app-ai-card">
+                      <div class="app-ai-icon" aria-hidden="true">🤖</div>
+                      <p class="app-ai-fault"><strong>Possible Fault:</strong> Cooling system or lubrication problem</p>
+                    </div>
+                    <div class="app-action-card">
+                      <span class="app-action-label">Recommended Action</span>
+                      <p>Check cooling system and oil circulation within 24 hours</p>
+                    </div>
+                    <div class="app-priority">
+                      <span>Priority:</span>
+                      <span class="priority-tag priority-tag--urgent">Urgent — 24 hours</span>
+                    </div>
+                  </div>
+
+                  <!-- Checklist -->
+                  <div class="phone-screen-content" data-screen="checklist">
+                    <div class="app-header">
+                      <h4>Maintenance Checklist</h4>
+                    </div>
+                    <ul class="app-checklist" id="checklist">
+                      <li>
+                        <input type="checkbox" id="check1">
+                        <label for="check1">Inspect coolant level and colour</label>
+                      </li>
+                      <li>
+                        <input type="checkbox" id="check2">
+                        <label for="check2">Check cooling pump operation</label>
+                      </li>
+                      <li>
+                        <input type="checkbox" id="check3">
+                        <label for="check3">Verify oil pressure gauge reading</label>
+                      </li>
+                      <li>
+                        <input type="checkbox" id="check4">
+                        <label for="check4">Inspect oil filter condition</label>
+                      </li>
+                      <li>
+                        <input type="checkbox" id="check5">
+                        <label for="check5">Check for leaks in cooling lines</label>
+                      </li>
+                      <li>
+                        <input type="checkbox" id="check6">
+                        <label for="check6">Record vibration measurement</label>
+                      </li>
+                    </ul>
+                    <div class="checklist-progress">
+                      <span id="checklistProgress">0 of 6 completed</span>
+                      <div class="progress-bar">
+                        <div class="progress-fill" id="checklistBar" style="width: 0%"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Feedback -->
+                  <div class="phone-screen-content" data-screen="feedback">
+                    <div class="app-header">
+                      <h4>Technician Feedback</h4>
+                    </div>
+                    <form class="app-feedback-form" id="feedbackForm">
+                      <label for="feedbackText">Describe what you found and what action you took:</label>
+                      <textarea id="feedbackText" rows="4" placeholder="e.g. Coolant level was low. Topped up and checked pump — no leaks found."></textarea>
+                      <label for="feedbackRating">How helpful was the AI recommendation?</label>
+                      <select id="feedbackRating">
+                        <option value="">Select rating...</option>
+                        <option value="5">Very helpful</option>
+                        <option value="4">Helpful</option>
+                        <option value="3">Neutral</option>
+                        <option value="2">Not very helpful</option>
+                        <option value="1">Not helpful</option>
+                      </select>
+                      <button type="submit" class="btn btn-primary btn-sm">Submit Feedback</button>
+                    </form>
+                    <div class="feedback-success" id="feedbackSuccess" hidden>
+                      ✓ Feedback submitted. Thank you!
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom nav -->
+                <nav class="phone-nav" id="phoneNav">
+                  <button class="phone-nav-btn active" data-target="dashboard" aria-label="Dashboard">
+                    <span aria-hidden="true">🏠</span>
+                    <span>Home</span>
+                  </button>
+                  <button class="phone-nav-btn" data-target="alert" aria-label="Alert Detail">
+                    <span aria-hidden="true">🔔</span>
+                    <span>Alert</span>
+                  </button>
+                  <button class="phone-nav-btn" data-target="recommendation" aria-label="AI Recommendation">
+                    <span aria-hidden="true">🤖</span>
+                    <span>AI</span>
+                  </button>
+                  <button class="phone-nav-btn" data-target="checklist" aria-label="Checklist">
+                    <span aria-hidden="true">✅</span>
+                    <span>Tasks</span>
+                  </button>
+                  <button class="phone-nav-btn" data-target="feedback" aria-label="Feedback">
+                    <span aria-hidden="true">💬</span>
+                    <span>Feedback</span>
+                  </button>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Request Demo -->
+    <section class="section" id="demo">
+      <div class="container">
+        <div class="demo-wrapper">
+          <div class="demo-info">
+            <span class="section-tag">Get Started</span>
+            <h2 class="section-title">Request a Demo</h2>
+            <p>
+              Interested in MarineAI for your vessel or fleet? Fill in the form and our team
+              will contact you with a demo of the system.
+            </p>
+            <ul class="demo-benefits">
+              <li>Free 30-minute online demo</li>
+              <li>Custom package recommendation</li>
+              <li>No commitment required</li>
+            </ul>
+          </div>
+          <form class="demo-form" id="demoForm">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@company.com" required>
+            </div>
+            <div class="form-group">
+              <label for="company">Company / Organisation</label>
+              <input type="text" id="company" name="company" placeholder="Maritime Services Ltd.">
+            </div>
+            <div class="form-group">
+              <label for="package">Package Interest</label>
+              <select id="package" name="package">
+                <option value="">Select a package...</option>
+                <option value="basic">Basic Package</option>
+                <option value="smart">Smart Package</option>
+                <option value="premium">Premium Package</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message (optional)</label>
+              <textarea id="message" name="message" rows="3" placeholder="Tell us about your vessel or fleet..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Send Demo Request</button>
+            <div class="form-success" id="formSuccess" hidden>
+              ✓ Demo request received! We will contact you soon.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="logo-icon" aria-hidden="true">⚓</span>
+        <span>MarineAI Smart Maintenance Package</span>
+      </div>
+      <p class="footer-note">University Engineering Project · AI-Supported Predictive Maintenance for Marine Engines</p>
+      <p class="footer-copy">&copy; 2026 MarineAI Project Team. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
