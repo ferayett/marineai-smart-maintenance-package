@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MarineAI Technician App</title>
+
+  <style>
+    :root {
+      --navy: #0a2e4f;
+      --navy-2: #123f67;
+      --surface: #eef3f7;
+      --card: #ffffff;
+      --text: #16324a;
+      --muted: #66809a;
+      --teal: #18b1a9;
+      --green: #27ae60;
+      --yellow: #f2b84b;
+      --orange: #f39c12;
+      --red: #e74c3c;
+      --border: #d7e2ec;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0a2e4f 0%, #123f67 100%);
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .phone-shell {
+      width: min(390px, calc(100vw - 24px));
+      height: min(800px, calc(100vh - 24px));
+      background: #0a2744;
+      border-radius: 38px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      border: 3px solid rgba(255,255,255,0.08);
+      position: relative;
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      background: var(--surface);
+      border-radius: 28px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .status-bar {
+      height: 56px;
+      background: #fff;
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      font-weight: 700;
+      font-size: 14px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 132px;
+      height: 28px;
+      background: #0a2744;
+      border-bottom-left-radius: 18px;
+      border-bottom-right-radius: 18px;
+    }
+
+    .status-icons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .app-header {
+      background: var(--navy);
+      color: #fff;
+      padding: 18px 20px 16px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand .anchor {
+      font-size: 20px;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0 0 6px 0;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: #d5e2ee;
+      font-size: 13px;
+    }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      padding-bottom: 95px;
+    }
+
+    .content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .content::-webkit-scrollbar-thumb {
+      background: #b6c7d7;
+      border-radius: 8px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .highlight-card {
+      background: #0c3155;
+      color: #fff;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #1dc3d1;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .highlight-title {
+      margin: 0 0 14px 0;
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .pill.red {
+      background: var(--red);
+    }
+
+    .pill.yellow {
+      background: #f0ad4e;
+    }
+
+    .pill.green {
+      background: var(--green);
+    }
+
+    .score-card {
+      background: #e8f7f5;
+      border: 1px solid #7ed3cd;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .score-label {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .score-value {
+      font-size: 26px;
+      font-weight: 800;
+      color: #1d938e;
+      letter-spacing: 1px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .mini-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      min-height: 96px;
+    }
+
+    .mini-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .mini-value {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .mini-value.orange { color: var(--orange); }
+    .mini-value.red { color: var(--red); }
+    .mini-value.green { color: var(--green); }
+
+    .note {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .small-note {
+      font-size: 12px;
+      color: #6f879d;
+      font-style: italic;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 2px 0 12px 0;
+      color: var(--text);
+    }
+
+    .list-item {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .list-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .list-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .advice-box {
+      background: #ecf7ff;
+      border: 1px solid #b8dfff;
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+
+    .check-box {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #8eb1ca;
+      border-radius: 6px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      cursor: pointer;
+      background: #fff;
+      position: relative;
+    }
+
+    .check-box.checked {
+      background: #2aa86d;
+      border-color: #2aa86d;
+    }
+
+    .check-box.checked::after {
+      content: "✓";
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -56%);
+    }
+
+    .check-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .feedback-option {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      text-align: left;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+
+    .feedback-option.active {
+      border-color: #78cfc8;
+      background: #e9f7f5;
+      color: #16857e;
+    }
+
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    .bottom-nav {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 78px;
+      background: #fff;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      z-index: 10;
+    }
+
+    .tab-btn {
+      border: none;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: 12px;
+      color: #49637a;
+      cursor: pointer;
+    }
+
+    .tab-btn .icon {
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .tab-btn.active {
+      color: #099b92;
+      font-weight: 700;
+    }
+
+    .footer-space {
+      height: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone-shell">
+    <div class="phone-screen">
+      <div class="status-bar">
+        <div>09:41</div>
+        <div class="notch"></div>
+        <div class="status-icons">
+          <span>📶</span>
+          <span>🔋</span>
+        </div>
+      </div>
+
+      <div class="app-header">
+        <div class="brand"><span class="anchor">⚓</span> MarineAI</div>
+        <h1 class="title" id="pageTitle">Technician Dashboard</h1>
+        <p class="subtitle" id="pageSubtitle">Simulated maintenance alerts</p>
+      </div>
+
+      <div class="content">
+        <!-- HOME -->
+        <div class="view active" id="view-home">
+          <div class="highlight-card">
+            <div class="label">Active Alert</div>
+            <h3 class="highlight-title">ME-01 Main Propulsion Engine</h3>
+            <span class="pill red">HIGH RISK</span>
+          </div>
+
+          <div class="score-card">
+            <div class="score-label">Engine Health Score</div>
+            <div class="score-value">68 / 100</div>
+          </div>
+
+          <div class="grid">
+            <div class="mini-card">
+              <div class="mini-label">Temperature</div>
+              <div class="mini-value orange">92°C</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Operating Hours</div>
+              <div class="mini-value">1340 h</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Oil Pressure</div>
+              <div class="mini-value red">Low</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Vibration Level</div>
+              <div class="mini-value red">High</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Last Maintenance</div>
+              <div class="mini-value">78 days ago</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">System Status</div>
+              <div class="mini-value green">Monitoring</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="note">
+              One high-priority alert needs attention. Use the tabs below to view the alert details,
+              AI advice, checklist steps, and technician feedback.
+            </div>
+          </div>
+
+          <div class="small-note">Prototype only — data is simulated, not from real sensors.</div>
+        </div>
+
+        <!-- ALERT -->
+        <div class="view" id="view-alert">
+          <div class="card">
+            <div class="label" style="color:#18b1a9;">Alert Details</div>
+            <div class="section-title">ME-01 Main Propulsion Engine</div>
+            <div class="note">
+              The system detected abnormal vibration and low oil pressure values. The alert level is high
+              because multiple indicators show a possible maintenance need.
+            </div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">Detected issue</div>
+            <div class="list-desc">Combined abnormal vibration trend and reduced oil pressure.</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">Risk level</div>
+            <div class="list-desc">High — inspection is recommended before extended operation.</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">Time of alert</div>
+            <div class="list-desc">Today, 09:20</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">Recommended action</div>
+            <div class="list-desc">Check oil line, inspect bearings, and review vibration source.</div>
+          </div>
+        </div>
+
+        <!-- AI -->
+        <div class="view" id="view-ai">
+          <div class="advice-box">
+            <div class="label" style="color:#0c8dc7;">AI Recommendation</div>
+            <div class="note" style="color:#31556f;">
+              Based on the simulated engine condition data, the system suggests an inspection of the oil
+              supply line and a vibration check around the rotating components.
+            </div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">Possible cause 1</div>
+            <div class="list-desc">Oil pressure drop due to partial blockage or insufficient lubrication.</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">Possible cause 2</div>
+            <div class="list-desc">High vibration caused by imbalance, loosened mounting, or bearing wear.</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-title">Suggested priority</div>
+            <div class="list-desc">Inspect within the next maintenance window.</div>
+          </div>
+
+          <div class="card">
+            <div class="note">
+              This is a decision-support prototype. The AI output is for demonstration and does not replace
+              technician judgment.
+            </div>
+          </div>
+        </div>
+
+        <!-- TASKS -->
+        <div class="view" id="view-tasks">
+          <div class="card">
+            <div class="label" style="color:#18b1a9;">Maintenance Checklist</div>
+            <div class="note">
+              Follow the basic maintenance steps below and mark completed tasks.
+            </div>
+          </div>
+
+          <div class="check-item">
+            <div class="check-box" onclick="toggleCheck(this)"></div>
+            <div class="check-text">Inspect oil pressure line and verify visible leakage.</div>
+          </div>
+
+          <div class="check-item">
+            <div class="check-box" onclick="toggleCheck(this)"></div>
+            <div class="check-text">Measure vibration around the propulsion engine housing.</div>
+          </div>
+
+          <div class="check-item">
+            <div class="check-box" onclick="toggleCheck(this)"></div>
+            <div class="check-text">Check bearing condition and mounting stability.</div>
+          </div>
+
+          <div class="check-item">
+            <div class="check-box" onclick="toggleCheck(this)"></div>
+            <div class="check-text">Record temperature after the test run.</div>
+          </div>
+
+          <div class="check-item">
+            <div class="check-box" onclick="toggleCheck(this)"></div>
+            <div class="check-text">Report findings to the supervisor or maintenance log.</div>
+          </div>
+        </div>
+
+        <!-- FEEDBACK -->
+        <div class="view" id="view-feedback">
+          <div class="card">
+            <div class="label" style="color:#18b1a9;">Technician Feedback</div>
+            <div class="note">
+              After inspection, the technician can mark whether the AI recommendation was useful.
+            </div>
+          </div>
+
+          <button class="feedback-option" onclick="selectFeedback(this)">Correct</button>
+          <button class="feedback-option" onclick="selectFeedback(this)">Partially correct</button>
+          <button class="feedback-option" onclick="selectFeedback(this)">Incorrect</button>
+
+          <div class="card">
+            <div class="note">
+              This feedback can be used in future work to improve the maintenance recommendation process.
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-space"></div>
+      </div>
+
+      <div class="bottom-nav">
+        <button class="tab-btn active" data-view="home" data-title="Technician Dashboard" data-subtitle="Simulated maintenance alerts">
+          <span class="icon">🏠</span>
+          <span>Home</span>
+        </button>
+        <button class="tab-btn" data-view="alert" data-title="Alert Details" data-subtitle="Condition monitoring alert">
+          <span class="icon">🔔</span>
+          <span>Alert</span>
+        </button>
+        <button class="tab-btn" data-view="ai" data-title="AI Analysis" data-subtitle="Decision-support recommendation">
+          <span class="icon">🤖</span>
+          <span>AI</span>
+        </button>
+        <button class="tab-btn" data-view="tasks" data-title="Maintenance Tasks" data-subtitle="Checklist for inspection">
+          <span class="icon">✅</span>
+          <span>Tasks</span>
+        </button>
+        <button class="tab-btn" data-view="feedback" data-title="Technician Feedback" data-subtitle="Human-in-the-loop validation">
+          <span class="icon">💬</span>
+          <span>Feedback</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll(".tab-btn");
+    const views = document.querySelectorAll(".view");
+    const pageTitle = document.getElementById("pageTitle");
+    const pageSubtitle = document.getElementById("pageSubtitle");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        const selectedView = tab.dataset.view;
+
+        views.forEach(view => view.classList.remove("active"));
+        document.getElementById("view-" + selectedView).classList.add("active");
+
+        pageTitle.textContent = tab.dataset.title;
+        pageSubtitle.textContent = tab.dataset.subtitle;
+      });
+    });
+
+    function toggleCheck(element) {
+      element.classList.toggle("checked");
+    }
+
+    function selectFeedback(button) {
+      document.querySelectorAll(".feedback-option").forEach(btn => {
+        btn.classList.remove("active");
+      });
+      button.classList.add("active");
+    }
+  </script>
+</body>
+</html>
